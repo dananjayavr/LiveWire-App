@@ -256,3 +256,29 @@ Forms
 -----
 
 Use php artisan livewire:form <formname> command to simplify create/edit forms to keep component code lean
+
+Reading model properties from JavaScript (Alpine). You can do something like this:
+
+<div class="mb-3" x-show="$wire.form.allowNotifications">
+
+This means that the element will be hidden, depending on the boolean value defined in allowNotifications property in the component code.
+
+Also, to track when various fields of a form has changed, you can use : 
+
+            <div class="mb-2" wire:dirty.class="text-orange-400" wire:target="form.notifications">
+                Notification Options<span wire:dirty wire:target="form.notifications">*</span>
+            </div>
+
+here wire:dirty.class element will be added to the div whenever the property watched by wire:target gets changed
+
+You can also do this with buttons:  
+
+        <button
+            class="text-white p-2 bg-indigo-700  rounded-sm disabled:opacity-75 disabled:bg-blue-300"
+            type="submit"
+            wire:dirty.class="hover:bg-indigo-900"
+            wire:dirty.attr.remove="disabled"
+            disabled
+        >
+
+Here the button will remain disabled, unless some field gets changed in the form 

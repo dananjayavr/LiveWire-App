@@ -26,8 +26,8 @@ class ConfirmDelete extends Component
     #[On('delete-confirmed')]
     public function delete() {
         $this->article->delete();
-        $this->close();
 
+        $this->close();
         $this->dispatch('article-deleted');
     }
 

@@ -282,3 +282,48 @@ You can also do this with buttons:
         >
 
 Here the button will remain disabled, unless some field gets changed in the form 
+
+Lazy Loading
+------------
+
+To lazy load a component (meaning it'll be rendered once the data is ready) use the lazy keyword in the component
+declaration: 
+
+<livewire:published-count lazy />
+
+Within the component class, you can also define a method called placeholder, which can render a placeholder component,
+until the real values show up
+
+You can also lazyily load full page components as well as entire classes using #[Lazy]
+
+URL Parameters
+--------------
+
+    #[Url(as: 'q', except: '', history: true)]
+
+is same as 
+
+protected function queryString() {
+    return [
+'searchText' => ['as' => 'q', 'except' => '', 'history' => true ]
+]
+}
+
+Basically what this does is replacing searchText URL parameter as q and keep the history intact, to be able to go back
+to search results using the back button (browser history). Also, except key means that the query parameter disappears,
+if there are no search terms associated with the query parameter. 
+
+Redirection
+-----------
+
+Use 
+
+$this->redirectIntended('/dashboard');
+
+If you want to redirect the user to its original page, after authentication for example. 
+User hits create article URL -> redirected to sign-in page -> redirect back to create article URL
+
+File Uploads
+------------
+
+Make sure to run php artisan storage:link if there are some issues with uploaded images not showing up

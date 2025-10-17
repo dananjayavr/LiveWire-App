@@ -4,8 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Lazy;
 use Livewire\Component;
 
+#[Lazy]
 class PublishedCount extends Component
 {
     public $placeholderText = "";

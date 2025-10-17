@@ -8,6 +8,7 @@
                 type="text"
                 class="p-4 w-full border rounded-md bg-white-700 text-black"
                 wire:model.live.debounce="searchText"
+                wire:offline.attr="disabled"
             >
 {{--            <button
                 class="text-white font-medium rounded-md p-4 bg-indigo-600 disabled:bg-indigo-200"
@@ -18,5 +19,9 @@
             </button>--}}
         </div>
     </form>
-    <livewire:search-results :results="$results" :show="!empty($searchText)"/>
+    @if(!empty($searchText))
+        <div wire:transition>
+            <livewire:search-results :results="$results"/>
+        </div>
+    @endif
 </div>

@@ -11,9 +11,6 @@ class SearchResults extends Component
     #[Reactive]
     public $results = [];
 
-    #[Reactive]
-    public bool $show;
-
     public function render()
     {
         return view('livewire.search-results');
